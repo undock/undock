@@ -1,0 +1,32 @@
+---
+
+build:
+  strategy: default
+
+  git_repo: git@git.myproject.fr
+  git_branch: develop
+
+  subtree: app
+  shared_paths:
+    - var
+    - media
+  unwanted_paths:
+    - .git
+    - .gitignore
+  changelog: changelog.tpl
+
+send:
+  strategy: default
+
+  servers:
+    - host: myhost1
+      user: myuser
+      pass: mypass
+      app_path: /var/www/html
+    - host: myhost2
+      user: myuser
+      pass: mypass
+      app_path: /var/www/html
+
+  max_releases: 6
+  
